@@ -5,12 +5,10 @@ import base64
 
 app = FastAPI()
 
-@app.get("/image")
-def get_image():
-    path = r"C:\Users\user\Downloads\sun.png"
-    img = Image.open(path)
-    buffer = io.BytesIO()
-    img.save(buffer, format="PNG")
-    image_b64 = base64.b64encode(buffer.getvalue()).decode("utf8")
-    
-    return {"image": "generated.png", "base64": image_b64}
+@app.get("/datetime")
+def get_data():
+    return {"datetime": "datetime"}
+
+# Build
+# pip install fastapi uvicorn
+# uvicorn micro_server:app --reload
