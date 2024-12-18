@@ -1,0 +1,6 @@
+minio
+ultralytics
+pillow
+torch
+fastapi
+streamlit
