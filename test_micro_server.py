@@ -4,24 +4,35 @@ import io
 from PIL import Image
 import streamlit as st
 import pandas as pd
- 
+import datetime
+import os                                                                   
+import glob
+from constants import PATH
+from constants import BASE_URL
 
-BASE_URL = "http://127.0.0.1:8000"
+def get_image(d):
+    os.chdir(PATH)
+    ls = list(glob.glob(f"{d}*.png"))
+    if len(ls) == 0:
+        st.write("No images on this date")
+    else:
+        for file in ls:    
+            img = Image.open(file)
+            st.write(file)                       
+            st.image(img)
 
-def display_image(image_b64):
-    decoded = base64.b64decode(image_b64)
-    img = Image.open(io.BytesIO(decoded))
-    st.image(img)
-
-    
-def get_image():
-    response = requests.get(f"{BASE_URL}/image")
+def ask_datetime():
+    response = requests.get(f"{BASE_URL}/datetime")
     if response.status_code == 200:
+        d = st.date_input("Datetime", value=None, min_value=datetime.date(1950, 1, 1), max_value=datetime.datetime.now())
         try:
-            display_image(response.json()["base64"])
+            st.write("Your date", d)
+            get_image(d)
         except:
-            print("ERROR")
-    
+            st.write("ERROR in date")
+
 if __name__ == "__main__":
-    get_image()
+    ask_datetime()
     
+# Build
+# streamlit run C:\Users\user\Downloads\test_micro_server.py
