@@ -4,3 +4,8 @@ pillow
 torch
 fastapi
 streamlit
+astropy
+sunpy
+numpy
+tqdm
+requests
