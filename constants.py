@@ -19,7 +19,7 @@ STD_RSUN = 2.947125380936948
 
 # For images
 BASE_URL = "http://127.0.0.1:8000"
-PATH = r"C:\Users\user\Downloads\train\images"
+PATH = r"images/model_output"
 
 # Max number of .fits files downloading in one run
 DOWNLOAD_LIMIT = 30
