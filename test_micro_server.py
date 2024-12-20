@@ -9,6 +9,7 @@ from constants import BASE_URL
 
 
 def get_image(d):
+    """Shows all picture at this date"""
     print(d)
     os.chdir(PATH)
     ls = list(glob.glob(f"{d}**.png"))
@@ -22,6 +23,7 @@ def get_image(d):
 
 
 def ask_datetime():
+    """Input of date"""
     response = requests.get(f"{BASE_URL}/datetime")
     if response.status_code == 200:
         d = st.date_input("Datetime", value=None, min_value=datetime.date(2021, 1, 1),
@@ -37,4 +39,4 @@ if __name__ == "__main__":
     ask_datetime()
 
 # Build
-# streamlit run C:\Users\user\Downloads\test_micro_server.py
+# streamlit run test_micro_server.py
