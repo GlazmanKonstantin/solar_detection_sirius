@@ -8,10 +8,6 @@ from astropy.io import fits
 
 from math import pi, degrees, sin, cos
 
-PATH_LINE_TXT = "/home/elian/My code/sirius/Project_Sum/dataset/dataset_yolo/train/labels/2011-02-05T211813Z_3.txt"
-PATH_SUN = "/home/elian/My code/sirius/Project_Sum/test1.png"
-
-
 def make_seg(color = "e", PATH_LINE_TXT, PATH_SUN, dR, RSUN, sun_x_c, sun_y_c):
     widthBBox = 1
     
