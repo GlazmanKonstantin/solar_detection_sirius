@@ -6,21 +6,33 @@ import sys
 import astropy
 from astropy.io import fits
 
+from os import listdir
 from converter import FitsConverter
+import shutil
+from fnmatch import fnmatch
 from math import pi, degrees, sin, cos
 
-PATH = r'C:\Users\user\Downloads\test\aia.lev1_euv_12s.2021-01-01T000610Z.171.image_lev1.fits'
+PATH_FITS = r'C:\Users\user\Downloads\hh.fits'
 
 PATH_OUTPUT_SUN = r'C:\Users\user\Downloads'
-PATH_FITS = r'C:\Users\user\Downloads\test'
-PATH_CSV = r'C:\Users\user\Downloads\test\trash.csv'
-PATH_IMG = r'C:\Users\user\Downloads\test1'
+PATH_FOLDER = r'C:\Users\user\Downloads\test'
 PATH_PREDICT_YOLO = r'C:\Users\user\Downloads\2021-01-04T050010Z_3.txt'
 
+def get_len(fits_file):
+    shutil.copy(PATH_FITS, PATH_FOLDER)
+    FitsConverter(PATH_FOLDER, PATH_FOLDER + r'\trash.csv', '', PATH_FOLDER, verbose=False).convert()
+    len_line = 0
+    os.chdir(PATH_FOLDER)
+    for f in listdir(PATH_FOLDER):
+        if fnmatch(f, '*.png'):
+            im = Image.open(f)
+            len_line=im.size[0]
+            im.close()
+        os.remove(f)
+    return len_line
+
 def make_seg(yolo_predict, fits_file, color = "red"):
-    FitsConverter(PATH_IMG, PATH_CSV, '', PATH_FITS, verbose=False).convert()
-    im = Image.open(r'C:\Users\user\Downloads\test1\aia.lev1_euv_12s.2021-01-01T000610Z.171.image_lev1_boundary.png').convert('RGB')
-    len_line = im.size[0]
+    len_line = get_len(fits_file)
     widthBBox = 2
     head = fits_file[1].header
     RSUN = head["R_SUN"]
@@ -69,10 +81,10 @@ def make_seg(yolo_predict, fits_file, color = "red"):
                 (sun_x_c + r_fi * sin(a_fi),
                 sun_y_c - r_fi * cos(a_fi))], color, widthBBox)
     
-    print(im_SUN)
-    im_SUN.show()
+    # print(im_SUN)
+    # im_SUN.show()
     
 
 if __name__ == "__main__":
-    fits_file=fits.open(PATH)
+    fits_file = fits.open(PATH_FITS)
     make_seg(PATH_PREDICT_YOLO, fits_file)
