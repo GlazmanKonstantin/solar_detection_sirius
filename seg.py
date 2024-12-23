@@ -11,7 +11,7 @@ from converter import FitsConverter
 import shutil
 from fnmatch import fnmatch
 from math import pi, degrees, sin, cos
-from constants import DIGITIZATION_SIZE, IMGSZ, IMGSZ_Y, SEGMENT_COUNT
+from constants import DIGITIZATION_SIZE, IMGSZ, Y_IMGSZ, SEGMENT_COUNT
 import numpy as np
 
 PATH_FITS = r'C:\Users\user\Downloads\image.fits'
@@ -50,7 +50,7 @@ def make_seg(yolo_predict, fits_file, color = "red"):
     widthBBox = 2
     head = fits_file[1].header
     RSUN = head["R_SUN"]
-    dR = IMGSZ_Y
+    dR = Y_IMGSZ
     sun_x_c = head["CRPIX1"]
     sun_y_c = head["CRPIX2"]
 
