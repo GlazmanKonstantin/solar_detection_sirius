@@ -38,6 +38,10 @@ def make_seg(yolo_predict, fits_file, color = "red"):
     RSUN = head["R_SUN"]
     sun_x_c = head["CRPIX1"]
     sun_y_c = head["CRPIX2"]
+
+    x_len = X2 - X1
+    if X1 > X2:
+        x_len = 1 - X2 + X1
     
     X_c = 0.0
     Y_c = 0.0
