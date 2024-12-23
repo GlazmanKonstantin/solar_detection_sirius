@@ -111,11 +111,11 @@ def make_seg(yolo_predict, fits_file, color = "red"):
         draw.arc((sun_x_c - r_st,
                   sun_y_c - r_st,
                   sun_x_c + r_st,
-                  sun_y_c + r_st), degrees(a_st), 360, color, widthBBox)
+                  sun_y_c + r_st), degrees(a__st), 360, color, widthBBox)
         draw.arc((sun_x_c - r_st,
                   sun_y_c - r_st,
                   sun_x_c + r_st,
-                  sun_y_c + r_st), 0, degrees(a_fi), color, widthBBox)
+                  sun_y_c + r_st), 0, degrees(a__fi), color, widthBBox)
     else:
         draw.arc((sun_x_c - r_st,
                   sun_y_c - r_st,
@@ -126,11 +126,11 @@ def make_seg(yolo_predict, fits_file, color = "red"):
         draw.arc((sun_x_c - r_fi,
                   sun_y_c - r_fi,
                   sun_x_c + r_fi,
-                  sun_y_c + r_fi), degrees(a_st), 360, color, widthBBox)
+                  sun_y_c + r_fi), degrees(a__st), 360, color, widthBBox)
         draw.arc((sun_x_c - r_fi,
                   sun_y_c - r_fi,
                   sun_x_c + r_fi,
-                  sun_y_c + r_fi), 0, degrees(a_fi), color, widthBBox)
+                  sun_y_c + r_fi), 0, degrees(a__fi), color, widthBBox)
     else:
         draw.arc((sun_x_c - r_fi,
                   sun_y_c - r_fi,
