@@ -82,7 +82,7 @@ def make_seg(yolo_predict, fits_file, color = "red"):
         isThree = True
         
     x_1 = X1 + x_rel1 * x_len
-    x_2 = X2 + x_rel2 * x_len
+    x_2 = X1 + x_rel2 * x_len
 
     a__st = x_1 * 2 * pi
     a__fi = x_2 * 2 * pi
@@ -120,7 +120,7 @@ def make_seg(yolo_predict, fits_file, color = "red"):
         draw.arc((sun_x_c - r_st,
                   sun_y_c - r_st,
                   sun_x_c + r_st,
-                  sun_y_c + r_st), degrees(a_st), degrees(a_fi), color, widthBBox)
+                  sun_y_c + r_st), degrees(a__st), degrees(a__fi), color, widthBBox)
     
     if isThree:
         draw.arc((sun_x_c - r_fi,
