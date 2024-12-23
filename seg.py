@@ -135,17 +135,17 @@ def make_seg(yolo_predict, fits_file, color = "red"):
         draw.arc((sun_x_c - r_fi,
                   sun_y_c - r_fi,
                   sun_x_c + r_fi,
-                  sun_y_c + r_fi), degrees(a_st), degrees(a_fi), color, widthBBox)
+                  sun_y_c + r_fi), degrees(a__st), degrees(a__fi), color, widthBBox)
     
     
-    draw.line([(sun_x_c + r_st * sin(a_st),
-                sun_y_c - r_st * cos(a_st)),
-               (sun_x_c + r_fi * sin(a_st),
-                sun_y_c - r_fi * cos(a_st)) ], color, widthBBox)
-    draw.line([(sun_x_c + r_st * sin(a_fi),
-                sun_y_c - r_st * cos(a_fi)),
-               (sun_x_c + r_fi * sin(a_fi),
-                sun_y_c - r_fi * cos(a_fi))], color, widthBBox)
+    draw.line([(sun_x_c + r_st * cos(a_st),
+                sun_y_c - r_st * sin(a_st)),
+               (sun_x_c + r_fi * cos(a_st),
+                sun_y_c - r_fi * sin(a_st)) ], color, widthBBox)
+    draw.line([(sun_x_c + r_st * cos(a_fi),
+                sun_y_c - r_st * sin(a_fi)),
+               (sun_x_c + r_fi * cos(a_fi),
+                sun_y_c - r_fi * sin(a_fi))], color, widthBBox)
     
     # print(im_SUN)
     # im_SUN.show()
