@@ -96,8 +96,8 @@ def make_seg(yolo_predict, fits_file, color = "red"):
     y_rel1 = Y_c - H / 2
     y_rel2 = Y_c + H / 2
 
-    y1 = y_rel1 * dR
-    y2 = y_rel2 * dR
+    y1 = (1 - y_rel1) * dR
+    y2 = (1 - y_rel2) * dR
 
     r_st = RSUN + y1
     r_fi = RSUN + y2
